@@ -3,576 +3,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashutosh Agrawal | Executive Portfolio</title>
-    
-    <!-- Premium Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <title>Ashutosh Agrawal | Architect of Order</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <style>
-        :root {
-            --bg-body: #020617; 
-            --nav-bg: rgba(2, 6, 23, 0.9);
-            --accent: #2dd4bf; 
-            --accent-glow: rgba(45, 212, 191, 0.15);
-            --text-main: #f8fafc;
-            --text-dim: #94a3b8;
-            --glass-card: rgba(15, 23, 42, 0.6);
-            --border: rgba(255, 255, 255, 0.06);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-            background-image: 
-                linear-gradient(var(--border) 1px, transparent 1px),
-                linear-gradient(90deg, var(--border) 1px, transparent 1px),
-                radial-gradient(circle at 80% 20%, rgba(45, 212, 191, 0.1) 0%, transparent 40%),
-                radial-gradient(circle at 20% 80%, rgba(45, 212, 191, 0.05) 0%, transparent 40%);
-            background-size: 50px 50px, 50px 50px, 100% 100%, 100% 100%;
-        }
-
-        /* --- ANIMATIONS --- */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- NAVIGATION --- */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.2rem 10%;
-            background: var(--nav-bg);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
-        }
-
-        .nav-brand {
-            font-weight: 800;
-            font-size: 1.8rem;
-            letter-spacing: -2px;
-            text-decoration: none;
-            display: flex;
-            gap: 2px;
-        }
-
-        .logo-a1 { color: var(--accent); }
-        .logo-a2 { color: #fff; text-shadow: 0 0 10px var(--accent-glow); }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dim);
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transition: 0.3s ease;
-        }
-
-        .nav-links a:hover { color: var(--accent); }
-
-        /* --- HERO SECTION --- */
-        header {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 10%;
-            position: relative;
-        }
-
-        .hero-content {
-            z-index: 2;
-        }
-
-        .hero-kicker {
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--accent);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 8px;
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 0.8s ease-out;
-            background: rgba(45, 212, 191, 0.1);
-            padding: 4px 12px;
-            border-radius: 4px;
-        }
-
-        header h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(3.5rem, 12vw, 7.5rem); 
-            font-weight: 700;
-            line-height: 0.9;
-            letter-spacing: -5px;
-            margin-bottom: 1.5rem;
-            color: #fff;
-            animation: fadeInUp 1s ease-out 0.2s forwards;
-            opacity: 0;
-        }
-
-        .hero-desc {
-            max-width: 750px;
-            color: var(--text-dim);
-            font-size: 1.2rem;
-            font-weight: 400;
-            margin-bottom: 2.5rem;
-            animation: fadeInUp 1.2s ease-out 0.4s forwards;
-            opacity: 0;
-            line-height: 1.6;
-        }
-
-        .hero-cta {
-            animation: fadeInUp 1.4s ease-out 0.6s forwards;
-            opacity: 0;
-            display: flex;
-            gap: 20px;
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: var(--bg-body);
-            padding: 12px 32px;
-            border-radius: 100px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: 0.3s;
-        }
-
-        .btn-primary:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px var(--accent-glow);
-        }
-
-        .scroll-hint {
-            position: absolute;
-            bottom: 40px;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--text-dim);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            animation: float 2s infinite ease-in-out;
-        }
-
-        .scroll-hint i {
-            color: var(--accent);
-            font-size: 1rem;
-        }
-
-        /* --- MAIN CONTENT --- */
-        main {
-            padding: 0 10%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        section {
-            padding: 100px 0;
-        }
-
-        h2 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.8rem;
-            margin-bottom: 50px;
-            font-weight: 700;
-            letter-spacing: -2px;
-            color: #fff;
-            text-align: center; 
-        }
-
-        /* --- ABOUT SECTION --- */
-        .about-card {
-            background: var(--glass-card);
-            border: 1px solid var(--border);
-            padding: 60px;
-            border-radius: 32px;
-            text-align: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-        }
-
-        .about-card p {
-            font-size: 1.15rem;
-            line-height: 1.9;
-            color: var(--text-dim);
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .highlight-text { color: #fff; font-weight: 600; }
-        .accent-text { color: var(--accent); font-weight: 600; }
-
-        /* --- GRID & CARDS --- */
-        .grid-layout {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: var(--glass-card);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border);
-            padding: 45px;
-            border-radius: 24px;
-            transition: all 0.4s ease;
-        }
-
-        .card:hover {
-            border-color: rgba(45, 212, 191, 0.3);
-            transform: translateY(-8px);
-        }
-
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-            font-weight: 700;
-            color: #fff;
-        }
-
-        .sub-header {
-            color: var(--accent);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            margin-bottom: 20px;
-            display: block;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .card ul { list-style: none; margin-top: 15px; }
-        .card li {
-            color: var(--text-dim);
-            font-size: 0.95rem;
-            margin-bottom: 12px;
-            padding-left: 25px;
-            position: relative;
-            text-align: left;
-        }
-
-        .card li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: bold;
-        }
-
-        /* --- SKILLS --- */
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            justify-content: center;
-        }
-
-        .skill-pill {
-            background: rgba(30, 41, 59, 0.4);
-            border: 1px solid var(--border);
-            padding: 12px 24px;
-            border-radius: 100px;
-            font-size: 0.85rem;
-            color: var(--text-dim);
-            transition: 0.3s;
-        }
-
-        .skill-pill:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            background: rgba(45, 212, 191, 0.1);
-        }
-
-        /* --- GLOBAL BADGE --- */
-        .global-badge {
-            background: linear-gradient(145deg, rgba(45, 212, 191, 0.08), transparent);
-            border: 1px solid var(--border);
-            padding: 45px;
-            border-radius: 24px;
-            margin-top: 40px;
-            text-align: center;
-        }
-
-        .global-badge i {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 20px;
-        }
-
-        /* --- CONTACTS --- */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .contact-item {
-            background: var(--glass-card);
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            text-decoration: none;
-            color: var(--text-main);
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .contact-item:hover {
-            border-color: var(--accent);
-            background: rgba(45, 212, 191, 0.08);
-            transform: scale(1.02);
-        }
-
-        .contact-item i {
-            font-size: 1.4rem;
-            color: var(--accent);
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            padding: 80px 10%;
-            text-align: center;
-            border-top: 1px solid var(--border);
-            color: #475569;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-        }
-
-        @media (max-width: 968px) {
-            header h1 { font-size: 3.5rem; letter-spacing: -2px; }
-            .grid-layout { grid-template-columns: 1fr; }
-            .about-card { padding: 40px 25px; }
-            nav { padding: 1rem 5%; }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <!-- TOP NAVIGATION BAR -->
-    <nav>
-        <a href="#" class="nav-brand">
-            <span class="logo-a1">A</span><span class="logo-a2">A</span>
-        </a>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#contacts">Contacts</a></li>
-        </ul>
+    <div class="custom-cursor"></div>
+
+    <div class="bg-mesh">
+        <div class="mesh-blob blob-1"></div>
+        <div class="mesh-blob blob-2"></div>
+    </div>
+
+    <nav class="glass-nav">
+        <div class="nav-wrapper">
+            <a href="#home" class="brand-logo">AA<span class="dot">.</span></a>
+            
+            <div class="nav-links">
+                <a href="#about" class="nav-item">About</a>
+                <a href="#experience" class="nav-item">Experience</a>
+                <a href="#education" class="nav-item">Academic</a>
+                <a href="#contact" class="nav-item btn-outline">Let's Talk</a>
+            </div>
+        </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <header id="home">
-        <div class="hero-content">
-
-            <span class="hero-kicker">IIM Bangalore • Management • Operations</span>
-
-            <h1>ASHUTOSH <br>AGRAWAL</h1>
-            <p class="hero-desc">
-                BBA Digital Business & Entrepreneurship student dedicated to architecting operational excellence and leading strategic organizational outcomes.
-            </p>
-            <div class="hero-cta">
-                <a href="#contacts" class="btn-primary">Connect with me</a>
-            </div>
-        </div>
-        <div class="scroll-hint">
-            <span>Scroll</span>
-            <i class="fa-solid fa-chevron-down"></i>
-        </div>
-    </header>
-
     <main>
-        
-        <!-- ABOUT -->
-        <section id="about" class="reveal">
-            <h2>About</h2>
-            <div class="about-card">
-                <p>
-                    Driven by a mindset of <span class="highlight-text">structure, resilience, and responsibility</span>, I am a BBA DBE student at <span class="accent-text">IIM Bangalore</span> with a strong interest in leadership and operational strategy. I enjoy working in environments where organization, planning, and decision-making play a critical role in achieving results. 
-                    <br><br>
-                    Through my roles as <span class="highlight-text">Head of Event Operations (HEO)</span> and <span class="highlight-text">Zonal Representative (ZR)</span>, I have been involved in coordinating teams, managing event structures, and representing student concerns within the program. These experiences have strengthened my ability to manage complexity, collaborate effectively, and maintain clarity under pressure. 
-                    <br><br>
-                    My academic journey and leadership roles continue to shape my approach toward management—focused on <span class="accent-text">creating order, improving systems, and delivering consistent outcomes</span>.
+        <header id="home" class="hero-section">
+            <div class="hero-content reveal-up">
+                <div class="status-badge">
+                    <span class="pulse-dot"></span> Available for Operations & Strategy Roles
+                </div>
+                
+                <h1 class="glitch-title">
+                    <span class="light-text">Ashutosh</span><br>
+                    <span class="gradient-text">Agrawal</span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    BBA Digital Business & Entrepreneurship student focused on architecting operational excellence and delivering structured outcomes.
                 </p>
+
+                <div class="hero-cta">
+                    <a href="#experience" class="btn-primary">Explore My Work <i class="fa-solid fa-arrow-down"></i></a>
+                </div>
+            </div>
+        </header>
+
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <span>Operational Strategy</span> <i class="fa-solid fa-star-of-life"></i>
+                <span>Stakeholder Management</span> <i class="fa-solid fa-star-of-life"></i>
+                <span>Event Systems Design</span> <i class="fa-solid fa-star-of-life"></i>
+                <span>Leadership & Coordination</span> <i class="fa-solid fa-star-of-life"></i>
+                <span>Project Execution</span> <i class="fa-solid fa-star-of-life"></i>
+                <span>Decision Making</span> <i class="fa-solid fa-star-of-life"></i>
+                <span>Digital Business Models</span> <i class="fa-solid fa-star-of-life"></i>
+                <span>Operational Strategy</span> <i class="fa-solid fa-star-of-life"></i>
+                <span>Stakeholder Management</span> <i class="fa-solid fa-star-of-life"></i>
+                <span>Event Systems Design</span> <i class="fa-solid fa-star-of-life"></i>
+            </div>
+        </div>
+
+        <section id="about" class="container">
+            <div class="section-title reveal-up">
+                <h2 class="watermark-text">01. Philosophy</h2>
+            </div>
+
+            <div class="bento-grid">
+                <div class="bento-card span-2 reveal-up">
+                    <i class="fa-solid fa-brain card-icon"></i>
+                    <h3>Mindset</h3>
+                    <p>Driven by a mindset of <strong class="accent-color">structure, resilience, and responsibility</strong>, I thrive in high-intensity environments where organization and clarity define success.</p>
+                </div>
+                
+                <div class="bento-card span-2 highlight-card reveal-up delay-1">
+                    <h3>The Journey</h3>
+                    <p>I am currently a BBA DBE student at IIM Bangalore with a strong inclination toward leadership and operational strategy. My experiences as Head of Event Operations and Zonal Representative have strengthened my ability to manage complexity, coordinate teams, and execute structured systems effectively.</p>
+                </div>
             </div>
         </section>
 
-        <!-- SKILLS / EXPERTISE -->
-        <section id="skills" class="reveal">
-            <h2>Expertise</h2>
-            <div class="skills-container">
-                <div class="skill-pill">Operational Strategy</div>
-                <div class="skill-pill">Stakeholder Management</div>
-                <div class="skill-pill">Event Systems Design</div>
-                <div class="skill-pill">Leadership & Coordination</div>
-                <div class="skill-pill">Project Execution</div>
-                <div class="skill-pill">Decision Making</div>
-                <div class="skill-pill">Strategic Planning</div>
-                <div class="skill-pill">Digital Business Models</div>
+        <section id="experience" class="container">
+            <div class="section-title reveal-up">
+                <h2 class="watermark-text">02. Experience</h2>
+            </div>
+
+            <div class="timeline-wrapper">
+                
+                <div class="timeline-item reveal-up">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content bento-card hover-lift">
+                        <span class="timeline-date">NOVA 2025 | IIM Bangalore</span>
+                        <h3>Head of Event Operations</h3>
+                        <ul class="sleek-list">
+                            <li>Architected master schedules and operational workflows</li>
+                            <li>Managed large-scale event execution</li>
+                            <li>Developed structured scoring systems</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal-up delay-1">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content bento-card hover-lift">
+                        <span class="timeline-date">North Zone 2 | Elected Official</span>
+                        <h3>Zonal Representative</h3>
+                        <ul class="sleek-list">
+                            <li>Represented 150+ students effectively</li>
+                            <li>Strengthened coordination and communication systems</li>
+                            <li>Built trust through structured engagement</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal-up delay-2">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content bento-card hover-lift">
+                        <span class="timeline-date">CBSE Cluster Tournament</span>
+                        <h3>Badminton Team Captain</h3>
+                        <ul class="sleek-list">
+                            <li>Led team to Quarter-Finals</li>
+                            <li>Developed discipline and teamwork</li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <!-- EDUCATION -->
-        <section id="education" class="reveal">
-            <h2>Academic</h2>
-            <div class="grid-layout">
-                <div class="card">
+        <section id="education" class="container">
+            <div class="section-title reveal-up">
+                <h2 class="watermark-text">03. Academic</h2>
+            </div>
+
+            <div class="bento-grid">
+                
+                <div class="bento-card reveal-up">
+                    <i class="fa-solid fa-graduation-cap card-icon"></i>
                     <h3>IIM Bangalore</h3>
-                    <span class="sub-header">BBA Digital Business & Entrepreneurship</span>
-                    <p>Rigorous management training focusing on digital ecosystems, time management, and resilience. Consistently engaged in leadership roles and high-intensity coursework.</p>
+                    <p class="subtitle">BBA Digital Business & Entrepreneurship</p>
+                    <p>Rigorous management training focusing on digital ecosystems, time management, and leadership development through real-world exposure.</p>
                 </div>
 
-                <div class="card">
+                <div class="bento-card reveal-up delay-1">
+                    <i class="fa-solid fa-building-columns card-icon"></i>
                     <h3>Senior Secondary</h3>
-                    <span class="sub-header">Class XII | Commerce</span>
-                    <p>Foundation in Business Management and Economics. Leader of the School Badminton Team, fostering teamwork and physical discipline.</p>
+                    <p class="subtitle">Commerce Stream</p>
+                    <p>Strong foundation in business management, economics, and analytical thinking, complemented by leadership in sports as a badminton team captain.</p>
                 </div>
-            </div>
 
-            <!-- HIROSHIMA HIGHLIGHT -->
-            <div class="global-badge">
-                <i class="fa-solid fa-earth-asia"></i>
-                <h3 style="margin-bottom: 12px;">AGILE COIL Achievement</h3>
-                <span class="sub-header">Hiroshima University, Japan | 2025</span>
-                <p style="color: var(--text-dim); max-width: 800px; margin: 0 auto; font-size: 1rem;">
-                    Completed international education focused on <span class="highlight-text">Democratic Governance</span>. Engaged with global participants from Japan and India, receipt of Certificate of Achievement.
-                </p>
+                <div class="bento-card global-card reveal-up span-2 delay-2">
+                    <div class="card-header">
+                        <i class="fa-solid fa-globe card-icon"></i>
+                        <span class="badge">Hiroshima University, Japan (2025)</span>
+                    </div>
+                    <h3>AGILE COIL Achievement</h3>
+                    <p>Participated in an international academic collaboration focusing on <strong class="accent-color">Democratic Governance</strong>, engaging with global participants from India and Japan.</p>
+                </div>
+
             </div>
         </section>
 
-        <!-- EXPERIENCE -->
-        <section id="experience" class="reveal">
-            <h2>Experience</h2>
-            <div class="grid-layout">
-                <div class="card">
-                    <h3>Head of Event Operations</h3>
-                    <span class="sub-header">NOVA 2025 | IIM Bangalore</span>
-                    <ul>
-                        <li>Architected master schedules and real-time operational flows.</li>
-                        <li>Balanced dual responsibilities as HEO and Zonal Representative.</li>
-                        <li>Developed standardized scoring systems for national integrity.</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>Zonal Representative</h3>
-                    <span class="sub-header">North Zone 2 | Elected Official</span>
-                    <ul>
-                        <li>Executed structured coordination and planning initiatives that strengthened North Zone 2’s performance and engagement throughout the competition.</li>
-                        <li>Focused on listening and coordination to earn trust.</li>
-                        <li>Represented 150+ students with a mandate of clarity.</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>Badminton Team Captain</h3>
-                    <span class="sub-header">CBSE Cluster Tournament | Quarter-Finalist</span>
-                    <ul>
-                        <li>Led school team to the Quarter-finals of the Cluster Tournament.</li>
-                        <li>Fostered a culture of resilience and physical discipline.</li>
-                    </ul>
+        <section id="contact" class="container last-section">
+            <div class="contact-box reveal-up">
+                <h2>Ready to connect?</h2>
+                <p>Feel free to reach out for collaborations and operational strategy roles.</p>
+                
+                <div class="contact-links">
+                    <a href="mailto:ashutoshsingle2@gmail.com" class="social-btn">
+                        <i class="fa-solid fa-envelope"></i> ashutoshsingle2@gmail.com
+                    </a>
+                    <a href="tel:+919719605747" class="social-btn">
+                        <i class="fa-solid fa-phone"></i> +91 9719605747
+                    </a>
+                    <a href="https://www.linkedin.com/in/ashutosh-agrawal-0a4a7a379/" target="_blank" class="social-btn linkedin-btn">
+                        <i class="fa-brands fa-linkedin"></i> Ashutosh Agrawal
+                    </a>
                 </div>
             </div>
         </section>
-
-        <!-- CONTACTS -->
-        <section id="contacts" class="reveal">
-            <h2>Contacts</h2>
-            <div class="contact-grid">
-                <a href="mailto:ashutoshsingle2@gmail.com" class="contact-item">
-                    <i class="fa-solid fa-envelope"></i>
-                    <div>
-                        <span style="display:block; font-size: 0.65rem; color: var(--accent); letter-spacing: 0.9px; font-weight: 700;">EMAIL</span>
-                        ashutoshsingle2@gmail.com
-                    </div>
-                </a>
-                <a href="tel:+919719605747" class="contact-item">
-                    <i class="fa-solid fa-phone"></i>
-                    <div>
-                        <span style="display:block; font-size: 0.65rem; color: var(--accent); letter-spacing: 1px; font-weight: 700;">MOBILE</span>
-                        +91 9719605747
-                    </div>
-                </a>
-                <a href="https://www.linkedin.com/in/ashutosh-agrawal-0a4a7a379/" target="_blank" class="contact-item">
-                    <i class="fa-brands fa-linkedin"></i>
-                    <div>
-                        <span style="display:block; font-size: 0.65rem; color: var(--accent); letter-spacing: 1px; font-weight: 700;">LINKEDIN</span>
-                        ashutosh-agrawal
-                    </div>
-                </a>
-            </div>
-        </section>
-
     </main>
 
     <footer>
-        &copy; 2026 ASHUTOSH AGRAWAL | THE ARCHITECT OF ORDER | IIMB BBA DBE
+        <p>&copy; 2026 ASHUTOSH AGRAWAL | THE ARCHITECT OF ORDER | IIMB BBA DBE</p>
     </footer>
 
-    <!-- SCROLL REVEAL SCRIPT -->
     <script>
-        const observerOptions = {
-            threshold: 0.1
-        };
-
+        // Scroll reveal logic
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.15 });
 
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
+
+        // Custom Cursor Logic
+        const cursor = document.querySelector('.custom-cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Hover effect on links for custom cursor
+        document.querySelectorAll('a, .bento-card').forEach(link => {
+            link.addEventListener('mouseenter', () => cursor.classList.add('cursor-grow'));
+            link.addEventListener('mouseleave', () => cursor.classList.remove('cursor-grow'));
+        });
     </script>
 
 </body>
